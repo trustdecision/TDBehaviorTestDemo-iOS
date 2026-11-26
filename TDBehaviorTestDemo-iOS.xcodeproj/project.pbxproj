@@ -332,7 +332,7 @@
 					"-ObjC",
 					"-lresolv",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.princekin.TDBehaviorTestDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TrustDecision.TDBehaviorTestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,7 +367,7 @@
 					"-ObjC",
 					"-lresolv",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.princekin.TDBehaviorTestDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TrustDecision.TDBehaviorTestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
