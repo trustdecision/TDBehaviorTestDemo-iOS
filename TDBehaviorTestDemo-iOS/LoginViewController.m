@@ -27,6 +27,7 @@
     self.passwordField = TDTextField(@"Password", YES); self.passwordField.textContentType = UITextContentTypePassword;
     self.privacyButton = [UIButton buttonWithType:UIButtonTypeSystem]; self.privacyButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.privacyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft; self.privacyButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    self.privacyButton.accessibilityIdentifier = @"privacy_checkbox";
     [self updatePrivacy]; [self.privacyButton addTarget:self action:@selector(privacyTapped) forControlEvents:UIControlEventTouchUpInside];
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeSystem]; registerButton.translatesAutoresizingMaskIntoConstraints = NO;
     [registerButton setTitle:@"Register" forState:UIControlStateNormal]; registerButton.titleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightBold];
@@ -59,8 +60,13 @@
     ]];
 }
 - (void)updatePrivacy {
-    [self.privacyButton setTitle:(self.privacyAgreed ? @"☑  I agree to the Privacy Policy" : @"☐  I agree to the Privacy Policy") forState:UIControlStateNormal];
+    [self.privacyButton setTitle:@"I agree to the Privacy Policy" forState:UIControlStateNormal];
+    UIImage *checkboxImage = [UIImage systemImageNamed:(self.privacyAgreed ? @"checkmark.square.fill" : @"square")];
+    [self.privacyButton setImage:checkboxImage forState:UIControlStateNormal];
+    self.privacyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 8);
+    self.privacyButton.accessibilityValue = self.privacyAgreed ? @"Selected" : @"Not selected";
     [self.privacyButton setTitleColor:(self.privacyAgreed ? TDBlue() : TDText()) forState:UIControlStateNormal];
+    self.privacyButton.tintColor = self.privacyAgreed ? TDBlue() : TDMuted();
 }
 - (void)privacyTapped {
     if (self.privacyAgreed) { self.privacyAgreed = NO; [self updatePrivacy]; return; }
